@@ -4,6 +4,8 @@
  */
 package onlinefoodorderingsystem;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,25 +22,76 @@ public class OnlineFoodOrderingSystem {
     public static void main(String[] args) {
         
         Scanner input = new Scanner(System.in);
+        List<User> users = new ArrayList<>();//making arraylist named users
         
-        try {
-            System.out.println("====================Welcome to Spago Foods delivery================= ");
-            Thread.sleep(1000);
-            System.out.println("Are you user of Spago Foods?(Yes or No)");
-            String input1 = input.nextLine();
+        users.add(new Admin("A001" , "admin1" , "admin123"));//Add a default admin for testing login
+        
+        while(true){
+            System.out.println("\n====Welcome to Spago Foods Delivery====");
+            System.out.println("1. Login"); 
+            System.out.println("2. Sign Up");
+            System.out.println("3. Exit");
+            System.out.print("Choose Option: ");
             
-            if(input1.equals("Yes")){
-                System.out.println("========Login========");
+            int choice = input.nextInt();
+            input.nextLine();//Clear Buffer
+            
+            if(choice == 1){
+                System.out.println("Enter username: ");
+                String username = input.nextLine();
+                System.out.println("Enter Password: ");
+                String password = input.nextLine();
+                
+                User loggedIn = null;
+                
+                for(User u: users){
+                    if(u.getUsername().equals(username)&& u.getPassword().equals(password)){
+                        loggedIn = u;
+                        break;
+                    }
+                }
+                
+                
+                if(loggedIn != null){
+                    System.out.println("\n=====Login successful!=====\n");
+                    loggedIn.viewDashboard(); //Polymorphism
+                }else{
+                    System.out.println("❌ Invalid username or password.");
+                }
+                
+            }else if(choice == 2){
+                User newUser = signUp(input);
+                
+                if(newUser !=null){
+                    users.add(newUser);
+                    System.out.println("✅ Sign-up successful! You can now log in");
+                }
+                
+                
+            }else if(choice == 3){
+                System.out.println("Exiting System...Good Bye!..");
+                break;
             }else{
-                System.out.println("========SignUp========");
-            } 
+                System.out.println("❗ Invalid choice. Try again.");
+            }
             
-        } catch (InterruptedException ex) {
-            Logger.getLogger(OnlineFoodOrderingSystem.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       }
         
-       
+        input.close();
         
     }
+    
+    
+    //sign-up method
+        public static User signUp(Scanner input){
+            System.out.println("\n====Sign Up======");
+            System.out.println("Enter role (Customer / RestaurantOwner / DeliveryAgent / Admin): ");
+            String role = input.nextLine().trim(); //remove space of beginning and ending
+            
+            System.out.println("Enter username: ");
+            String username = input.nextLine();
+            System.out.println("Enter Email: ");
+            String email = input.nex
+        }
     
 }

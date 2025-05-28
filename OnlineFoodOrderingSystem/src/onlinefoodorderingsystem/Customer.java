@@ -47,7 +47,7 @@ public class Customer extends User {
         System.out.println("2.Search/Filter FoodItems");
         System.out.println("3.View Cart / Place Order");
         System.out.println("4.View Order History");
-        System.out.println("Rate/Review Orders");
+        System.out.println("5.Rate/Review Orders");
     }
     
     

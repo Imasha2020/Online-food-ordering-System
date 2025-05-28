@@ -9,13 +9,11 @@ package onlinefoodorderingsystem;
  * @author IMASHA THARUSHI
  */
 public class Admin extends User{
-    
-    private String adminId;
 
-    public Admin(String adminId, String userId, String username, String password) {
+    public Admin(String userId, String username, String password) {
         super(userId, username, password);
-        this.adminId = adminId;
     }
+    
     
 
     @Override
