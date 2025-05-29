@@ -9,11 +9,11 @@ package onlinefoodorderingsystem;
  * @author IMASHA THARUSHI
  */
 public class RestuarantOwner extends User {
-     private Restaurant restaurant;
+     private String restaurantName;
 
-    public RestuarantOwner(Restaurant restaurant, String userId, String username, String password) {
+    public RestuarantOwner(String restaurantName, String userId, String username, String password) {
         super(userId, username, password);
-        this.restaurant = restaurant;
+        this.restaurantName = restaurantName;
     }
      
      

@@ -58,6 +58,13 @@ abstract class User {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "userId=" + userId + ", username=" + username + ", password=" + password + '}';
+    }
+    
+    
     
     abstract void viewDashboard();
     

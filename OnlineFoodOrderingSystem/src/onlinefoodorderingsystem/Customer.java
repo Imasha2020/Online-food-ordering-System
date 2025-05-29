@@ -8,31 +8,20 @@ package onlinefoodorderingsystem;
  *
  * @author IMASHA THARUSHI
  */
-public class Customer extends User {
-    private String address;
-    private Order[] orderHistory; 
 
-    public Customer(String address, Order[] orderHistory, String userId, String username, String password) {
+import java.util.Scanner;
+
+public class Customer extends User {
+    
+    
+    private String address;
+
+    public Customer(String address, String userId, String username, String password) {
         super(userId, username, password);
         this.address = address;
-        this.orderHistory = orderHistory;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Order[] getOrderHistory() {
-        return orderHistory;
-    }
-
-    public void setOrderHistory(Order[] orderHistory) {
-        this.orderHistory = orderHistory;
-    }
+    
 
    public void placeOrder(){
        
@@ -48,6 +37,26 @@ public class Customer extends User {
         System.out.println("3.View Cart / Place Order");
         System.out.println("4.View Order History");
         System.out.println("5.Rate/Review Orders");
+        
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter what is your choice: ");
+        int choice = input.nextInt();
+        
+        switch(choice){
+            case 1:
+                Restaurant restaurants = new Restaurant();
+        }
+        
+        
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
     
     

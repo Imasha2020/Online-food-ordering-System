@@ -25,6 +25,11 @@ public class OnlineFoodOrderingSystem {
         List<User> users = new ArrayList<>();//making arraylist named users
         
         users.add(new Admin("A001" , "admin1" , "admin123"));//Add a default admin for testing login
+        users.add(new Customer("Baduraliya","C001" , "cutomer1" , "customer123" ));
+        users.add(new RestuarantOwner("KFC" , "R001" , "resOwn1" , "resOwn123"));
+        users.add(new DeliveryAgent("D001" , "delAgent1" , "delAgent123"));
+        
+        
         
         while(true){
             System.out.println("\n====Welcome to Spago Foods Delivery====");
@@ -90,8 +95,38 @@ public class OnlineFoodOrderingSystem {
             
             System.out.println("Enter username: ");
             String username = input.nextLine();
-            System.out.println("Enter Email: ");
-            String email = input.nex
+            System.out.println("Enter password: ");
+            String password = input.nextLine();
+            
+            switch(role.toLowerCase()){
+                case "customer":
+                    System.out.println("Enter Address: ");
+                    String address = input.nextLine();
+                    return new Customer(address , generateId("C") , username , password);
+                    
+                case "RestaurantOwner" :
+                    System.out.println("Enter Restuarant Name: ");
+                    String Name = input.nextLine();
+                    return new RestuarantOwner(Name, generateId("R"), username, password);
+                    
+                case "DeliveryAgent" :
+                    return new DeliveryAgent(generateId("D"), username, password);
+                    
+                case "Admin" :
+                    return new Admin(generateId("A") , username , password);
+                    
+                    
+                default:
+                    System.out.println("Invalid role");
+                    return null;
+            }
+        
+            
         }
+
+    private static String generateId(String c) {
+       return System.currentTimeMillis() + c;
+    }
+
     
 }
